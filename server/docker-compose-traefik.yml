@@ -1,0 +1,44 @@
+services:
+  traefik:
+    image: traefik:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    command:
+      - --api.dashboard=true
+      - --api.insecure=false
+      - --log.level=INFO
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=base_default
+      - --entrypoints.web.address=:80
+      - --entrypoints.websecure.address=:443
+      - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
+      - --certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}
+      - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.web.http.redirections.entrypoint.scheme=https
+    labels:
+      # Traefik Dashboard routing
+      - traefik.enable=true
+      - traefik.http.routers.traefik.rule=Host(`traefik.mokadijital.com`)
+      - traefik.http.routers.traefik.tls=true
+      - traefik.http.routers.traefik.tls.certresolver=letsencrypt
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.routers.traefik.service=api@internal
+      # IP Whitelist - Sadece belirli IP'lerden erişim
+      - traefik.http.middlewares.traefik-ipwhitelist.ipwhitelist.sourcerange=176.40.242.140/32
+      - traefik.http.routers.traefik.middlewares=traefik-ipwhitelist
+    volumes:
+      - traefik-letsencrypt:/letsencrypt
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - base_default
+
+volumes:
+  traefik-letsencrypt:
+
+networks:
+  base_default:
+    external: true

@@ -1,0 +1,34 @@
+Proje tanımı aşağıda olan bir istek var. 
+Temel beklentiler:
+1. Uygulama olabildiğince Google Tablolar gibi, listeleme, arama, sort etme gibi özelliklerle excel mantığına yakın olsun.  Uygulama adı, "Pronto CRM" olsun.
+2. Bu uygulama için örnek veriler (200 katılımcı, 10 Etkinlik) oluşturup çalışan bir prototip hazırla. basit bir db (sqlite mesela), basit bir auth ekranı
+3. Hubspot, zoho, excel, google sheets gibi yerlerde veriler var. Bunlardaki datayı import edecek kolay ekranlar ekle.
+4. Docker üzerine deploy edilebilecek bir web app (SPA) şeklinde olsun.
+5. Kullanım basitliği çok önemli, veriyi bulmak, tüm detayı kolayca görmek ve editlemek çok kolay olsun.
+6. Müşterinin bu temel beklentilerini aşan, onu şaşırtacak kullanıcı deneyimi olsun.
+7. Modern ve stylish bir kullanıcı arayüzü, gece-gündüz görünüm geçişi, fonksiyonel olmasa da yedekleme ve geri dönüş seçenekleri. 
+8. API entegrasyonları (inbound ve outbound) konfigüratif olsun.
+9. Uygulama çok hızlı çalışsın, açılsın. 
+10. Next.js ve tailwind veya shadcn gibi güncel popüler ui framework kullan.
+11. Business'e dair eksikleri varsayımlarla kendin doldurabilirsin. 
+
+PROJE TANIMI:
+Bir etkinlik firmasıyız. E-tablolarda tuttuğumuz müşteri ve katılımcı kayıtlarını yönetmek için, e-tablo kullanımı kadar hızlı ve kolay bir CRM yazılımı geliştirmek istiyoruz.
+
+Amacımız kapsamlı bir satış veya pazarlama platformu kurmak değil. İhtiyacımız; kişilerin iletişim bilgilerini düzenli tutmak ve ekibimizin bu kişilerle geçmişte ne zaman, kim tarafından ve hangi konuda görüşüldüğünü kolayca görebilmesi.
+
+İhtiyaç duyduğumuz temel özellikler:
+Kişi kayıtlarında ad, soyad, telefon, e-posta ve belirleyeceğimiz diğer bilgileri saklama
+Kişi bilgilerinin güncellenebilmesi ve güncel bilginin kolayca bulunması
+Her kişi için görüşme geçmişi tutma: görüşme tarihi, görüşmeyi yapan kişi ve görüşme notu
+Bir kişinin en son ne zaman ve ne hakkında görüşüldüğünü kayıt sayfasında açıkça gösterme
+Kişileri hızlıca arama, filtreleme, sıralama ve liste halinde görüntüleme
+Kayıtları e-tablo kullanımına benzer biçimde hızlı ve kolay düzenleme
+Mevcut e-tablolardaki verileri sisteme aktarabilme
+Yetkili kullanıcıların kayıtlara erişebilmesi ve güncelleyebilmesi
+
+Kapsam dışında:
+İlk aşamada e-posta takibi, takvim entegrasyonu, pazarlama otomasyonu, satış fırsatı/pipeline yönetimi veya benzeri kapsamlı CRM özelliklerine ihtiyacımız yok.
+
+Beklentimiz:
+Geliştirilecek sistemin arayüzü sade, hızlı öğrenilebilir ve günlük kullanımda e-tablo kadar pratik olmalı. Özellikle çok sayıda kişi kaydı içinde arama yapmak, kayıt güncellemek ve bir kişinin geçmiş görüşmelerini görmek kolay olmalı.

@@ -1,0 +1,12 @@
+services:
+  pronto:
+    build: .
+    container_name: pronto-crm
+    ports:
+      - "3000:3000"
+    volumes:
+      - pronto-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  pronto-data:
