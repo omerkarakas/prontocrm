@@ -2,11 +2,22 @@ services:
   pronto:
     build: .
     container_name: pronto-crm
-    ports:
-      - "3000:3000"
+    restart: unless-stopped
     volumes:
       - pronto-data:/app/data
-    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pronto.rule=Host(`prontocrm.mokadijital.com`)
+      - traefik.http.routers.pronto.tls=true
+      - traefik.http.routers.pronto.tls.certresolver=letsencrypt
+      - traefik.http.routers.pronto.entrypoints=websecure
+      - traefik.http.services.pronto.loadbalancer.server.port=3000
+    networks:
+      - base_default
 
 volumes:
   pronto-data:
+
+networks:
+  base_default:
+    external: true
